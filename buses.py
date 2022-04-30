@@ -134,15 +134,9 @@ def print_horas(horas):
         print(f"{tiempo}\t")
 
 
-
-print(get_codigo_linea("V21"))
-print(get_codigo_parada(221,"Padilla - Mas Casanovas"))
-print(get_horas_proximas(221,1234,"10:00"))
-print(get_minutos_restantes(1234,"V21"))
-print(get_horarios("V21","Padilla - Mas Casanovas","10:00"))
-
-nom_parada = "Padilla - Mas Casanovas"
-
-
-
-
+if __name__ == "__main__":
+    print(get_codigo_linea("V21"))
+    print(get_codigo_parada(221,"Padilla - Mas Casanovas"))
+    print(get_horas_proximas(221,1234,"10:00"))
+    print(get_minutos_restantes(1234,"V21"))
+    print(get_horarios("V21","Padilla - Mas Casanovas","10:00"))
