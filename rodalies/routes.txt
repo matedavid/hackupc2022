@@ -1,0 +1,126 @@
+route_id,route_short_name,route_long_name,route_type,route_color,route_text_color                                                                     
+10T0001C1  ,C1  ,Principe Pio                            -Aeropuerto-T4                           ,2,00FFFF,000000                                    
+10T0002C1  ,C1  ,Aeropuerto-T4                           -Principe Pio                            ,2,00FFFF,000000                                    
+10T0003C10 ,C10 ,Villalba                                -Aeropuerto-T4                           ,2,66FF00,000000                                    
+10T0004C10 ,C10 ,Aeropuerto-T4                           -Villalba                                ,2,66FF00,000000                                    
+10T0005C2  ,C2  ,Guadalajara                             -Chamartín - Clara Campoamor             ,2,00FF00,000000                                    
+10T0006C2  ,C2  ,Chamartín - Clara Campoamor             -Guadalajara                             ,2,00FF00,000000                                    
+10T0007C3  ,C3  ,Chamartín - Clara Campoamor             -Aranjuez                                ,2,CC00CC,000000                                    
+10T0008C3  ,C3  ,Aranjuez                                -Chamartín - Clara Campoamor             ,2,CC00CC,000000                                    
+10T0009C3a ,C3a ,Chamartín - Clara Campoamor             -El Escorial                             ,2,CC00CC,000000                                    
+10T0010C3a ,C3a ,El Escorial                             -Chamartín - Clara Campoamor             ,2,CC00CC,000000                                    
+10T0011C4  ,C4  ,Chamartín - Clara Campoamor             -Parla                                   ,2,CC00CC,000000                                    
+10T0012C4  ,C4  ,Parla                                   -Chamartín - Clara Campoamor             ,2,CC00CC,000000                                    
+10T0013C4a ,C4a ,Alcobendas-S.Sebast. de los Reyes       -Parla                                   ,2,CC00CC,000000                                    
+10T0014C4a ,C4a ,Parla                                   -Alcobendas-S.Sebast. de los Reyes       ,2,CC00CC,000000                                    
+10T0015C4b ,C4b ,Colmenar Viejo                          -Parla                                   ,2,CC00CC,000000                                    
+10T0016C4b ,C4b ,Parla                                   -Colmenar Viejo                          ,2,CC00CC,000000                                    
+10T0017C5  ,C5  ,Mostoles el Soto                        -Humanes                                 ,2,66FF00,000000                                    
+10T0018C5  ,C5  ,Humanes                                 -Mostoles el Soto                        ,2,66FF00,000000                                    
+10T0019C7  ,C7  ,Alcala de Henares                       -Principe Pio                            ,2,FF0000,000000                                    
+10T0020C7  ,C7  ,Principe Pio                            -Alcala de Henares                       ,2,FF0000,000000                                    
+10T0021C8  ,C8  ,Atocha                                  -Cercedilla                              ,2,00FF00,000000                                    
+10T0022C8  ,C8  ,Cercedilla                              -Atocha                                  ,2,00FF00,000000                                    
+10T0023C3a ,C3a ,Atocha                                  -El Escorial                             ,2,00FF00,000000                                    
+10T0024C3a ,C3a ,El Escorial                             -Atocha                                  ,2,00FF00,000000                                    
+10T0025C9  ,C9  ,Cercedilla                              -Cotos                                   ,2,FF9900,000000                                    
+10T0026C9  ,C9  ,Cotos                                   -Cercedilla                              ,2,FF9900,000000                                    
+10T0027C3a ,C3a ,Atocha                                  -El Escorial                             ,2,CC00CC,000000                                    
+10T0028C3a ,C3a ,El Escorial                             -Atocha                                  ,2,CC00CC,000000                                    
+20T0001C1  ,C1  ,Gijon (Sanz Crespo)                     -Puente L.Fierros                        ,2,FF0000,000000                                    
+20T0002C1  ,C1  ,Puente L.Fierros                        -Gijon (Sanz Crespo)                     ,2,FF0000,000000                                    
+20T0003C2  ,C2  ,Oviedo                                  -El Entrego                              ,2,00FF00,000000                                    
+20T0004C2  ,C2  ,El Entrego                              -Oviedo                                  ,2,00FF00,000000                                    
+20T0005C3  ,C3  ,Llamaquique                             -San Juan de Nieva                       ,2,3366FF,000000                                    
+20T0006C3  ,C3  ,San Juan de Nieva                       -Llamaquique                             ,2,3366FF,000000                                    
+20T0007C2  ,C2  ,Gijon (Sanz Crespo)                     -                                        ,2,00FF00,000000                                    
+20T0008C2  ,C2  ,                                        -Gijon (Sanz Crespo)                     ,2,00FF00,000000                                    
+30T0001C1  ,C1  ,Lora del Rio                            -Lebrija                                 ,2,00FFFF,000000                                    
+30T0002C1  ,C1  ,Lebrija                                 -Lora del Rio                            ,2,00FFFF,000000                                    
+30T0003C2  ,C2  ,Santa Justa                             -Cartuja                                 ,2,00FF00,000000                                    
+30T0004C2  ,C2  ,Cartuja                                 -Santa Justa                             ,2,00FF00,000000                                    
+30T0005C3  ,C3  ,Santa Justa                             -Cazalla-Constantina                     ,2,FF0000,000000                                    
+30T0006C3  ,C3  ,Cazalla-Constantina                     -Santa Justa                             ,2,FF0000,000000                                    
+30T0007C4  ,C4  ,Santa Justa                             -Santa Justa                             ,2,CC00CC,000000                                    
+30T0009C5  ,C5  ,Jardines de Hercules                    -Benacazon                               ,2,3366FF,000000                                    
+30T0010C5  ,C5  ,Benacazon                               -Jardines de Hercules                    ,2,3366FF,000000                                    
+30T0011C3  ,C3  ,Santa Justa                             -Cazalla-Constantina                     ,2,FF0000,000000                                    
+30T0012C3  ,C3  ,Cazalla-Constantina                     -Santa Justa                             ,2,FF0000,000000                                    
+31T0001C1  ,C1  ,CADIZ                                   -AEROPUERTO DE JEREZ                     ,2,FF0000,000000                                    
+31T0002C1  ,C1  ,AEROPUERTO DE JEREZ                     -CADIZ                                   ,2,FF0000,000000                                    
+31T0003C1a ,C1a ,LAS ALETAS                              -UNIVERSIDAD                             ,2,FF0000,000000                                    
+31T0004C1a ,C1a ,UNIVERSIDAD                             -LAS ALETAS                              ,2,FF0000,000000                                    
+32T0001C1  ,C1  ,Málaga-Centro Alameda                   -Fuengirola                              ,2,00FFFF,000000                                    
+32T0002C1  ,C1  ,Fuengirola                              -Málaga-Centro Alameda                   ,2,00FFFF,000000                                    
+32T0003C2  ,C2  ,Málaga-Centro Alameda                   -Álora                                   ,2,00FF00,000000                                    
+32T0004C2  ,C2  ,Álora                                   -Málaga-Centro Alameda                   ,2,00FF00,000000                                    
+32T0005C2  ,C2  ,                                        -                                        ,2,00FF00,000000                                    
+32T0006C2  ,C2  ,                                        -                                        ,2,00FF00,000000                                    
+40T0001C1  ,C1  ,Valencia Nord                           -Platja i Grau de Gandia                 ,2,00FFFF,000000                                    
+40T0002C1  ,C1  ,Platja i Grau de Gandia                 -Valencia Nord                           ,2,00FFFF,000000                                    
+40T0005C2  ,C2  ,Valencia Nord                           -Moixent                                 ,2,FF9900,000000                                    
+40T0006C2  ,C2  ,Moixent                                 -Valencia Nord                           ,2,FF9900,000000                                    
+40T0007C3  ,C3  ,Valencia Nord                           -Utiel                                   ,2,CC00CC,000000                                    
+40T0008C3  ,C3  ,Utiel                                   -Valencia Nord                           ,2,CC00CC,000000                                    
+40T0009C4  ,C4  ,Valencia - Sant Isidre                  -Xirivella - L'Alter                     ,2,FF0000,000000                                    
+40T0010C4  ,C4  ,Xirivella - L'Alter                     -Valencia - Sant Isidre                  ,2,FF0000,000000                                    
+40T0011C5  ,C5  ,Valencia Nord                           -Caudiel                                 ,2,00FF00,000000                                    
+40T0012C5  ,C5  ,Caudiel                                 -Valencia Nord                           ,2,00FF00,000000                                    
+40T0013C6  ,C6  ,Valencia Nord                           -Castello de la Plana                    ,2,3366FF,000000                                    
+40T0014C6  ,C6  ,Castello de la Plana                    -Valencia Nord                           ,2,3366FF,000000                                    
+40T0015C6  ,C6  ,Valencia Nord                           -Castello de la Plana                    ,2,3366FF,000000                                    
+40T0016C6  ,C6  ,Castello de la Plana                    -Valencia Nord                           ,2,3366FF,000000                                    
+40T0017C3  ,C3  ,Valencia Nord                           -Utiel                                   ,2,CC00CC,000000                                    
+40T0018C3  ,C3  ,Utiel                                   -Valencia Nord                           ,2,CC00CC,000000                                    
+40T0019C5  ,C5  ,Valencia Nord                           -Caudiel                                 ,2,00FF00,000000                                    
+40T0020C5  ,C5  ,Caudiel                                 -Valencia Nord                           ,2,00FF00,000000                                    
+40T0021C6  ,C6  ,Valencia Nord                           -Castello de la Plana                    ,2,3366FF,000000                                    
+40T0022C6  ,C6  ,Castello de la Plana                    -Valencia Nord                           ,2,3366FF,000000                                    
+41T0001C1  ,C1  ,Murcia del Carmen                       -Alacant Terminal                        ,2,00FFFF,000000                                    
+41T0002C1  ,C1  ,Alacant Terminal                        -Murcia del Carmen                       ,2,00FFFF,000000                                    
+41T0003C2  ,C2  ,Murcia del Carmen                       -Aguilas                                 ,2,00FF00,000000                                    
+41T0004C2  ,C2  ,Aguilas                                 -Murcia del Carmen                       ,2,00FF00,000000                                    
+41T0005C3  ,C3  ,Sant Vicent Centre                      -Alacant Terminal                        ,2,CC00CC,000000                                    
+41T0006C3  ,C3  ,Alacant Terminal                        -Sant Vicent Centre                      ,2,CC00CC,000000                                    
+41T0007C2  ,C2  ,Murcia del Carmen                       -Aguilas                                 ,2,00FF00,000000                                    
+41T0008C2  ,C2  ,Aguilas                                 -Murcia del Carmen                       ,2,00FF00,000000                                    
+41T0009C2  ,C2  ,Murcia del Carmen                       -Orihuela Miguel Hernández               ,2,00FF00,000000                                    
+41T0010C2  ,C2  ,Orihuela Miguel Hernández               -Murcia del Carmen                       ,2,00FF00,000000                                    
+50T0001R1  ,R1  ,Molins de Rei                           -Maçanet-Massanes                        ,2,00FFFF,000000                                    
+50T0002R1  ,R1  ,Maçanet-Massanes                        -Molins de Rei                           ,2,00FFFF,000000                                    
+50T0003R2N ,R2N ,Aeroport                                -Maçanet-Massanes                        ,2,00FFFF,000000                                    
+50T0004R2N ,R2N ,Maçanet-Massanes                        -Aeroport                                ,2,00FFFF,000000                                    
+50T0005R4  ,R4  ,Sant Vicenc de Calders                  -Manresa                                 ,2,FF9900,000000                                    
+50T0006R4  ,R4  ,Manresa                                 -Sant Vicenc de Calders                  ,2,FF9900,000000                                    
+50T0007R2S ,R2S ,Sant Vicenc de Calders                  -Barcelona-Estació de França             ,2,00FF00,000000                                    
+50T0008R2S ,R2S ,Barcelona-Estació de França             -Sant Vicenc de Calders                  ,2,00FF00,000000                                    
+50T0009R2S ,R2S ,Sant Vicenc de Calders                  -Barcelona-Estació de França             ,2,00FF00,000000                                    
+50T0010R2S ,R2S ,Barcelona-Estació de França             -Sant Vicenc de Calders                  ,2,00FF00,000000                                    
+50T0011R2S ,R2S ,Sant Vicenc de Calders                  -Barcelona-Estació de França             ,2,00FF00,000000                                    
+50T0012R2S ,R2S ,Barcelona-Estació de França             -Sant Vicenc de Calders                  ,2,00FF00,000000                                    
+50T0013R2  ,R2  ,Sant Vicenc de Calders                  -Maçanet-Massanes                        ,2,00FF00,000000                                    
+50T0014R2  ,R2  ,Maçanet-Massanes                        -Sant Vicenc de Calders                  ,2,00FF00,000000                                    
+50T0015R3  ,R3  ,L'Hospitalet de Llobregat               -Puigcerdà                               ,2,00FF00,000000                                    
+50T0016R3  ,R3  ,Puigcerdà                               -L'Hospitalet de Llobregat               ,2,00FF00,000000                                    
+50T0017R3a ,R3a ,Vic                                     -La Tor de Querol-Enveig                 ,2,00FF00,000000                                    
+50T0018R3a ,R3a ,La Tor de Querol-Enveig                 -Vic                                     ,2,00FF00,000000                                    
+50T0019R4  ,R4  ,Sant Vicenc de Calders                  -Manresa                                 ,2,FF9900,000000                                    
+50T0020R4  ,R4  ,Manresa                                 -Sant Vicenc de Calders                  ,2,FF9900,000000                                    
+50T0021R7  ,R7  ,Martorell                               -L'Hospitalet de Llobregat               ,2,FF33FF,000000                                    
+50T0022R7  ,R7  ,L'Hospitalet de Llobregat               -Martorell                               ,2,FF33FF,000000                                    
+50T0023R8  ,R8  ,Martorell                               -Granollers Centre                       ,2,CC00CC,000000                                    
+50T0024R8  ,R8  ,Granollers Centre                       -Martorell                               ,2,CC00CC,000000                                    
+60T0001C1  ,C1  ,Abando                                  -Santurtzi                               ,2,FF0000,000000                                    
+60T0002C1  ,C1  ,Santurtzi                               -Abando                                  ,2,FF0000,000000                                    
+60T0003C2  ,C2  ,Abando                                  -Muskiz                                  ,2,00FF00,000000                                    
+60T0004C2  ,C2  ,Muskiz                                  -Abando                                  ,2,00FF00,000000                                    
+60T0005C3  ,C3  ,Abando                                  -Orduña                                  ,2,3366FF,000000                                    
+60T0006C3  ,C3  ,Orduña                                  -Abando                                  ,2,3366FF,000000                                    
+61T0001C1  ,C1  ,Irun                                    -Brincola                                ,2,FF0000,000000                                    
+61T0002C1  ,C1  ,Brincola                                -Irun                                    ,2,FF0000,000000                                    
+62T0001C1  ,C1  ,Santander                               -Reinosa                                 ,2,FF0000,000000                                    
+62T0002C1  ,C1  ,Reinosa                                 -Santander                               ,2,FF0000,000000                                    
+70T0001C1  ,C1  ,Casetas                                 -Miraflores                              ,2,FF0000,000000                                    
+70T0002C1  ,C1  ,Miraflores                              -Casetas                                 ,2,FF0000,000000                                    
+70T0003C1  ,C1  ,Casetas                                 -Miraflores                              ,2,FF0000,000000                                    
+70T0004C1  ,C1  ,Miraflores                              -Casetas                                 ,2,FF0000,000000                                    
