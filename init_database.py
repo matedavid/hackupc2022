@@ -7,7 +7,19 @@ if "database.db" in os.listdir("."):
 con = sqlite3.connect("database.db")
 cur = con.cursor()
 
-cur.execute("CREATE TABLE User (id integer primary key autoincrement, email varchar(40) not null, password varchar(40) not null);")
+cur.execute("""CREATE TABLE User (
+  id integer primary key autoincrement,
+  email varchar(40) not null,
+  password varchar(40) not null
+);""")
+
+cur.execute("""CREATE TABLE UserToken (
+  id integer primary key autoincrement,
+  token varchar(240) not null,
+  user integer references User(id),
+  creationTime integer not null,
+  expirationTime integer not null
+);""")
 
 cur.execute("""CREATE TABLE FGCTransport (
   fgcId integer primary key autoincrement, 
