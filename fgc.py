@@ -61,8 +61,6 @@ if __name__ == "__main__":
   destination = args[2]
   timemode = args[3]
 
-  print(origin, destination, timemode)
-
   if timemode == "now":
     timemode = TimeMode.NOW
   elif timemode == "departure":
