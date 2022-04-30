@@ -1,3 +1,4 @@
+from typing import Dict, List
 from bs4 import BeautifulSoup
 import requests as req
 import json
@@ -31,7 +32,7 @@ def get_url(origin_address: str, destination_address: str, timemode: TimeMode, t
 
   return url
 
-def get_trips(url: str):
+def get_trips(url: str) -> List[Dict[str, str]]:
   res = req.get(url)
   if res.status_code != 200:
     print("Status code:", res.status_code)
@@ -47,13 +48,31 @@ def get_trips(url: str):
   json_content = json.loads(json_content_txt)
   trips = json_content["result"]["Trips"]
 
+  return_trips = []
+
   for t in trips:
     trip = t['steps'][0]
     route = trip["route"]
     departure = trip["departure"]
     arrival = trip["arrival"]
 
-    print(f"{route}: {departure}-{arrival}")
+    return_trips.append({
+      "route": route,
+      "departure": departure,
+      "arrival": arrival
+    })
+
+  return return_trips
+
+def get_times(origin: str, destination: str, time: str | None) -> List[Dict[str, str]]:
+  if time == None:
+    timemode = TimeMode.NOW
+  else:
+    timemode = TimeMode.DEPARTURE
+
+  url = get_url(origin, destination, timemode, time)
+  trips = get_trips(url)
+  return trips
 
 if __name__ == "__main__":
   args = sys.argv
