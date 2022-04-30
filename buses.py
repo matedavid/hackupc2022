@@ -3,7 +3,7 @@ import json
 from datetime import datetime, timedelta, date
 from typing import Dict, Tuple, List
 
-def get_horarios(linea: str, parada: str, tiempo: str): #-> Dict[str,str | List[str]]:
+def get_horarios(linea: str, parada: str, tiempo: str | None) -> Dict[str,str | List[str]]:
     codigo_linea = get_codigo_linea(linea)
     codigo_parada = get_codigo_parada(codigo_linea, parada)
     horas_proximas = get_horas_proximas(codigo_linea,codigo_parada,tiempo)
