@@ -9,18 +9,19 @@ class TimeMode(Enum):
   DEPARTURE = 1
   ARRIVAL = 2
 
-def get_url(origin_address: str, destination_address: str, timemode: TimeMode, time: str = "") -> str:
-  origin_code = ""
-  destination_code = ""
-
+def get_station_code(station: str) -> str:
   stations_code = json.load(open("codigo-estaciones_fgc.json"))
   for st in stations_code:
     station_name = st['fields']['nom_estacio']
 
-    if station_name == origin_address:
-      origin_code = st['fields']['inicials']
-    elif station_name == destination_address:
-      destination_code = st['fields']['inicials']
+    if station_name == station:
+      return st['fields']['inicials']
+
+  return ""
+
+def get_url(origin_address: str, destination_address: str, timemode: TimeMode, time: str = "") -> str:
+  origin_code = get_station_code(origin_address)
+  destination_code = get_station_code(destination_address)
 
   date = "29-04-2022"
 
@@ -30,7 +31,7 @@ def get_url(origin_address: str, destination_address: str, timemode: TimeMode, t
 
   return url
 
-def get_trips(url):
+def get_trips(url: str):
   res = req.get(url)
   if res.status_code != 200:
     print("Status code:", res.status_code)
