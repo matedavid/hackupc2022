@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import requests as req
 import json
 import sys
-import datetime
 from enum import Enum
 
 class TimeMode(Enum):
