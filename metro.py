@@ -12,7 +12,7 @@ def print_horario(primera_sortida, darrera_sortida,tipus_dia):
     elif tipus_dia == 4:
         print(f"Darrera sortida: {darrera_sortida}")
 
-def get_horarios(linea: str): #-> Dict[str,str | None]:
+def get_horarios(linea: str) -> Dict[str,str | None]:
     codigo_linea = get_codigo_linea(linea)
     horario = get_horario(codigo_linea)
     dic = {

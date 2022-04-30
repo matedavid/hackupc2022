@@ -23,7 +23,7 @@ cur.execute("""CREATE TABLE UserToken (
 
 cur.execute("""CREATE TABLE FGCTransport (
   fgcId integer primary key autoincrement, 
-  user int references User,
+  user int references User(id),
 
   originStation varchar(20) not null,
   originStationCode char(2) not null,
@@ -36,13 +36,20 @@ cur.execute("""CREATE TABLE FGCTransport (
 
 cur.execute("""CREATE TABLE BUSTransport (
   busId integer primary key autoincrement, 
-  user int references User,
+  user int references User(id),
 
   lineName char(3) not null,
   stopName varchar(40) not null,
 
   time time
 );""")
+
+cur.execute("""CREATE TABLE METROTransport (
+  metroId integer primary key autoincrement,
+  user int references User(id),
+  lineName char(5) not null
+);""")
+
 con.commit()
 
 con.close()

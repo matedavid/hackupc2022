@@ -6,7 +6,7 @@ create table User (
 
 create table UserToken {
   id serial primary key,
-  token varchar(240) not null,
+  token varchar(120) not null,
   user serial references User,
   creationTime integer not null,
   expirationTime integer not null
@@ -36,3 +36,9 @@ create table BusTransport (
 
   time time
 );
+
+create table MetroTransport (
+  user serial references User,
+  metroId serial primary key,
+  lineName char(5) not null
+)

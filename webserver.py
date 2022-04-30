@@ -8,7 +8,8 @@ import time
 import jwt
 
 from fgc import get_times, get_station_code
-from buses import get_horarios
+from buses import get_horarios as bus_horarios 
+from metro import get_horarios as metro_horarios
 
 app = Flask(__name__)
 CORS(app)
@@ -168,6 +169,27 @@ def add_bus_entry():
 
   return json_response(True)
 
+@app.route("/api/metro/add", methods=["POST"])
+def add_metro_entry():
+  data = json.loads(request.data)
+
+  user = data["user"]
+  line_name = data["lineName"]
+
+  con = sqlite3.connect("database.db")
+  cur = con.cursor()
+
+  cur.execute("""INSERT INTO METROTransport (
+    user,
+    lineName
+  ) VALUES (?, ?);""", (user, line_name))
+
+  con.commit()
+  con.close()
+
+  return json_response(True)
+
+"""
 @app.route("/api/fgc/", methods=["GET"])
 def get_fgc():
   data = json.loads(request.data)
@@ -178,6 +200,7 @@ def get_fgc():
 
   times = get_times(origin, destination, time)
   return json_response(True, times)
+"""
 
 @app.route("/api/overview/<user_session>", methods=["GET"])
 def overview(user_session):
@@ -211,8 +234,16 @@ def overview(user_session):
   bus_results = cur.fetchall()
 
   for bus_res in bus_results:
-    times = get_horarios(bus_res[0], bus_res[1], bus_res[2])
+    times = bus_horarios(bus_res[0], bus_res[1], bus_res[2])
     overview["BUS"].append(times)
+
+  # MET
+  cur.execute("""SELECT lineName from METROTransport where user = ?;""", (user_id,))
+  met_results = cur.fetchall()
+
+  for met_res in met_results:
+    times = metro_horarios(met_res[0])
+    overview["MET"].append(times)
 
   return json_response(True, overview)
 
