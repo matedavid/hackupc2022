@@ -125,4 +125,19 @@ for time in horas:
 if len(horas_proximas) == 0:
     print("NO HAY BUSES BOBO")
     exit()
+
 print_horas(horas_proximas)
+
+
+get_min_res = requests.get(f"https://api.tmb.cat/v1/ibus/stops/{codigo_parada}?app_id=896b5b9e&app_key=8ff3a68902a34aa9e2a6e6ff037f0ff1")
+r = get_min_res.json()
+
+for x in r["data"]["ibus"]:
+    if x["line"] == nom_linia:
+        minutos_res = x["t-in-min"]
+        if minutos_res > 1:
+            print(f"Quedan {minutos_res} minutos para el siguiente bus.")
+        else:
+            print(f"La llegada de {nom_linia} es inminente")
+        break
+
