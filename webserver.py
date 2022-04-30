@@ -55,6 +55,19 @@ def get_fgc():
   print(fgcs)
 
   return "Ok"
+
+@app.route("/api/bus/", methods=["GET"])
+def get_bus():
+  con = sqlite3.connect("database.db")
+  cur = con.cursor()
+
+  cur.execute("SELECT * FROM BUSTransport;")
+  buses = cur.fetchall()
+
+  con.close()
+  print(buses)
+
+  return "Ok"
 ### 
 
 @app.route("/api/fgc/add", methods=["POST"])
@@ -83,6 +96,33 @@ def add_fgc_entry():
       destinationStationCode,
       time
     ) VALUES (?, ?, ?, ?, ?, ?)""", (user, origin, origin_code, destination, destination_code, time))
+
+  con.commit()
+  con.close()
+
+  return response(True)
+
+@app.route("/api/bus/add", methods=["POST"])
+def add_bus_entry():
+  data = json.loads(request.data)
+
+  user = data["user"]
+  line_name = data["lineName"]
+  stop_name = data["stopName"]
+  time = data["time"]
+
+  # TODO: Any check before inserting?
+  # - Check user exists?
+
+  con = sqlite3.connect("database.db")
+  cur = con.cursor()
+
+  cur.execute("""INSERT INTO BUSTransport (
+    user, 
+    lineName,
+    stopName,
+    time 
+  ) VALUES (?, ?, ?, ?)""", (user, line_name, stop_name, time))
 
   con.commit()
   con.close()

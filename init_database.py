@@ -19,7 +19,18 @@ cur.execute("""CREATE TABLE FGCTransport (
   destinationStation varchar(20) not null,
   destinationStationCode char(2) not null,
 
-  time time);""")
+  time time
+);""")
+
+cur.execute("""CREATE TABLE BUSTransport (
+  busId integer primary key autoincrement, 
+  user int references User,
+
+  lineName char(3) not null,
+  stopName varchar(40) not null,
+
+  time time
+);""")
 con.commit()
 
 con.close()
