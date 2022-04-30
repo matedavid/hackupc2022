@@ -3,14 +3,18 @@ from flask_cors import CORS
 
 import sqlite3
 import json
-from typing import Tuple
+from typing import Dict, Tuple
 import time
 import jwt
 
 from fgc import get_times, get_station_code
+from buses import get_horarios
 
 app = Flask(__name__)
 CORS(app)
+
+# TODO: Save secret key in env file
+secret_key = "secret"
 
 def json_response(status: bool, data: str = "") -> str:
   return json.dumps({ "status": status, "data": data })
@@ -23,10 +27,20 @@ def create_user_token(user: Tuple[int, str], creation_time: float, expiration_ti
     "expirationTime": int(expiration_time)
   }
 
-  # TODO: Save secret key in env file
-  secret_key = "secret"
   encoded = jwt.encode(payload, secret_key, algorithm="HS256")
   return encoded
+
+def decode_jwt_token(token: str) -> Dict[str, str]:
+  return jwt.decode(token, secret_key, algorithms=["HS256"])
+
+def validate_user_token(token: str) -> bool:
+  current_time = time.time()
+  try:
+    payload = decode_jwt_token(token)
+    return current_time < payload["expirationTime"]
+  except Exception as e:
+    print("Exception decoding jwt token:", e)
+    return False
 
 @app.route("/api/user/create", methods=["POST"])
 def create_user():
@@ -165,11 +179,42 @@ def get_fgc():
   times = get_times(origin, destination, time)
   return json_response(True, times)
 
-@app.route("/api/overview", methods=["GET"])
-def overview():
-  # Coge Buses, FGC y metro del usuario
-  # Consigue horarios
-  pass
+@app.route("/api/overview/<user_session>", methods=["GET"])
+def overview(user_session):
+  is_token_valid = validate_user_token(user_session)
+
+  if not is_token_valid:
+    return json_response(False, "User token has expired")
+
+  payload = decode_jwt_token(user_session)
+  user_id = payload["id"]
+
+  con = sqlite3.connect("database.db")
+  cur = con.cursor()
+
+  overview = {
+    "FGC": [],
+    "BUS": [],
+    "MET": []
+  }
+
+  # FGC 
+  cur.execute("""SELECT originStation, destinationStation, time FROM FGCTransport where user = ?;""", (user_id,))
+  fgc_results = cur.fetchall()
+
+  for fgc_res in fgc_results:
+    times = get_times(fgc_res[0], fgc_res[1], fgc_res[2])
+    overview["FGC"].append(times)
+
+  # BUS
+  cur.execute("""SELECT lineName, stopName, time FROM BUSTransport where user = ?;""", (user_id,))
+  bus_results = cur.fetchall()
+
+  for bus_res in bus_results:
+    times = get_horarios(bus_res[0], bus_res[1], bus_res[2])
+    overview["BUS"].append(times)
+
+  return json_response(True, overview)
 
 if __name__ == "__main__":
   app.run(debug=True)
