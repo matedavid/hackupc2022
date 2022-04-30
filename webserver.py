@@ -1,15 +1,18 @@
 from flask import Flask, request 
+from flask_cors import CORS
+
 import sqlite3
 import json
-from typing import Dict, Tuple
+from typing import Tuple
 import time
 import jwt
 
-from fgc import get_station_code
+from fgc import get_times, get_station_code
 
 app = Flask(__name__)
+CORS(app)
 
-def response(status: bool, data: str = "") -> str:
+def json_response(status: bool, data: str = "") -> str:
   return json.dumps({ "status": status, "data": data })
 
 def create_user_token(user: Tuple[int, str], creation_time: float, expiration_time: float) -> str:
@@ -37,14 +40,14 @@ def create_user():
 
   if len(users) != 0:
     con.close()
-    return response(False, "User with same email already exists")
+    return json_response(False, "User with same email already exists")
 
   cur.execute("INSERT INTO User (email, password) values (?, ?)", (data['email'], data['password']))
   con.commit()
 
   con.close()
 
-  return response(True)
+  return json_response(True)
 
 @app.route("/api/user/login", methods=["POST"])
 def login_user():
@@ -61,10 +64,10 @@ def login_user():
 
   if len(users) > 1:
     con.close()
-    return response(False, "Internal error")
+    return json_response(False, "Internal error")
   elif len(users) == 0:
     con.close()
-    return response(False, "The User does not exist")
+    return json_response(False, "The User does not exist")
 
   user = users[0]
   print(user)
@@ -90,61 +93,7 @@ def login_user():
   ) VALUES (?, ?, ?, ?);""", (user_token, user[0], current_time, expiration_time))
   con.commit()
 
-  return response(True, data=user_token)
-
-# TEMPORAL: Test
-@app.route("/api/user/tokens", methods=["GET"])
-def get_tokens():
-  con = sqlite3.connect("database.db")
-  cur = con.cursor()
-
-  cur.execute("SELECT * FROM UserToken")
-  tokens = cur.fetchall()
-
-  print(tokens)
-
-  return "Ok"
-  
-
-@app.route("/api/user/", methods=["GET"])
-def get_users():
-  con = sqlite3.connect("database.db")
-  cur = con.cursor()
-
-  cur.execute("SELECT * FROM User")
-  users = cur.fetchall()
-
-  con.close()
-
-  print(users)
-  return "Ok"
-
-@app.route("/api/fgc/", methods=["GET"])
-def get_fgc():
-  con = sqlite3.connect("database.db")
-  cur = con.cursor()
-
-  cur.execute("SELECT * FROM FGCTransport;")
-  fgcs = cur.fetchall()
-
-  con.close()
-  print(fgcs)
-
-  return "Ok"
-
-@app.route("/api/bus/", methods=["GET"])
-def get_bus():
-  con = sqlite3.connect("database.db")
-  cur = con.cursor()
-
-  cur.execute("SELECT * FROM BUSTransport;")
-  buses = cur.fetchall()
-
-  con.close()
-  print(buses)
-
-  return "Ok"
-### 
+  return json_response(True, data=user_token)
 
 @app.route("/api/fgc/add", methods=["POST"])
 def add_fgc_entry():
@@ -176,7 +125,7 @@ def add_fgc_entry():
   con.commit()
   con.close()
 
-  return response(True)
+  return json_response(True)
 
 @app.route("/api/bus/add", methods=["POST"])
 def add_bus_entry():
@@ -203,7 +152,24 @@ def add_bus_entry():
   con.commit()
   con.close()
 
-  return response(True)
+  return json_response(True)
+
+@app.route("/api/fgc/", methods=["GET"])
+def get_fgc():
+  data = json.loads(request.data)
+
+  origin = data["origin"]
+  destination = data["destination"]
+  time = data["time"]
+
+  times = get_times(origin, destination, time)
+  return json_response(True, times)
+
+@app.route("/api/overview", methods=["GET"])
+def overview():
+  # Coge Buses, FGC y metro del usuario
+  # Consigue horarios
+  pass
 
 if __name__ == "__main__":
   app.run(debug=True)
