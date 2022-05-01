@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import requests as req
 import json
 import sys
+from datetime import datetime
 from enum import Enum
 
 class TimeMode(Enum):
@@ -38,9 +39,10 @@ def get_url(origin_address: str, destination_address: str, timemode: TimeMode, t
   origin_code = get_station_code(origin_address)
   destination_code = get_station_code(destination_address)
 
-  date = "29-04-2022"
+  today = datetime.today()
+  today = today.isoformat()
 
-  url = f"https://www.fgc.cat/es/buscador/?from_address={origin_address}&from_code={origin_code}&to_address={destination_address}&to_code={destination_code}&datetime_option={timemode.value}&date={date}"
+  url = f"https://www.fgc.cat/es/buscador/?from_address={origin_address}&from_code={origin_code}&to_address={destination_address}&to_code={destination_code}&datetime_option={timemode.value}&date={today}"
   if timemode != TimeMode.NOW:
     time = reduce_time(time)
     url += f"&time_from={time}"
@@ -109,4 +111,4 @@ if __name__ == "__main__":
 
   url = get_url(origin, destination, timemode, time)
   print(url)
-  get_trips(url)
+  print(get_trips(url))
