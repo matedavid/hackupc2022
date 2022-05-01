@@ -17,6 +17,10 @@ const Login = (props) => {
         navigation.navigate('Home');
     }
 
+    const removeSessionToken = async () => {
+        await AsyncStorage.removeItem("sessionToken");
+    }
+
     const login = async () => {
         if (email.length == 0) {
             Alert.alert("Email can't be empty");
@@ -38,7 +42,7 @@ const Login = (props) => {
                 Alert.alert(res.data.data);
             }
         }).catch((err) => {
-            console.log(err)
+            removeSessionToken();
         });
     }
 

@@ -47,7 +47,16 @@ def validate_user_token(token: str) -> bool:
   current_time = time.time()
   try:
     payload = decode_jwt_token(token)
-    return current_time < payload["expirationTime"]
+
+    con = sqlite3.connect("database.db")
+    cur = con.cursor()
+
+    cur.execute("""SELECT * from User where id = ?;""", (payload['id'],))
+    users = cur.fetchall()
+
+    con.close()
+    return current_time < payload["expirationTime"] and len(users) == 1
+
   except Exception as e:
     print("Exception decoding jwt token:", e)
     return False
@@ -122,6 +131,7 @@ def login_user():
 @app.route("/api/user/validateToken/<token>", methods=["GET"])
 def validate_token(token):
   is_token_valid = validate_user_token(token)
+  print(is_token_valid)
   return json_response(is_token_valid)
 
 @app.route("/api/fgc/add", methods=["POST"])
@@ -130,7 +140,7 @@ def add_fgc_entry():
 
   origin = data["origin"]
   destination = data["destination"]
-  time = validate_time(data["time"])
+  time = None if data["time"] is None else validate_time(data["time"])
   user = data["user"]
 
   origin_code = get_station_code(origin)
@@ -163,7 +173,7 @@ def add_bus_entry():
   user = data["user"]
   line_name = data["lineName"]
   stop_name = data["stopName"]
-  time = validate_time(data["time"])
+  time = None if data["time"] == None else validate_time(data["time"])
 
   # TODO: Any check before inserting?
   # - Check user exists?

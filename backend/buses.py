@@ -73,7 +73,13 @@ def get_horas_proximas(codigo_linea: int, codigo_parada: int, tiempo: str) -> Li
 
     horas_proximas = []
     contador = 0
-    hora_date = datetime.strptime(tiempo,"%H:%M")
+
+    if tiempo is not None:
+        hora_date = datetime.strptime(tiempo,"%H:%M")
+    else:
+        hora_date = datetime.today()
+
+    print(hora_date)
 
     for time in horas:
         if hora_date < time:    

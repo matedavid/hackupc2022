@@ -40,13 +40,16 @@ def get_url(origin_address: str, destination_address: str, timemode: TimeMode, t
   destination_code = get_station_code(destination_address)
 
   today = datetime.today()
-  today = today.isoformat()[:10]
+  y, m, d= today.isoformat()[:10].split("-")
+  today = f"{d}-{m}-{y}"
+  print(today)
 
   url = f"https://www.fgc.cat/es/buscador/?from_address={origin_address}&from_code={origin_code}&to_address={destination_address}&to_code={destination_code}&datetime_option={timemode.value}&date={today}"
   if timemode != TimeMode.NOW:
     time = reduce_time(time)
     url += f"&time_from={time}"
 
+  print(url)
   return url
 
 def get_trips(url: str) -> List[Dict[str, str]]:

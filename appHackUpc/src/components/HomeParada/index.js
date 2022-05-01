@@ -27,7 +27,6 @@ const HomeParada = (props) => {
     const getData = async () => {
         setDataLoaded(false);
         const sessionToken = await AsyncStorage.getItem('sessionToken');
-        console.log(sessionToken)
         axios.get(`http://10.0.2.2:5000/api/overview/${sessionToken}`)
             .then((res) => {
                 if (res.data.status == false) {
@@ -55,12 +54,14 @@ const HomeParada = (props) => {
                 console.log(err);
                 if (err == "User token has expired") {
                     removeSessionToken();
+                    setDataLoaded(true);
                     navigation.navigate('Login');
                 }
             });
     }
 
     useEffect(() => {
+        setDataLoaded(false);
         if (isFocused) {
             getData();
         }
@@ -76,19 +77,19 @@ const HomeParada = (props) => {
             }
             {
                 fgc.map((data, idx) => {
-                    return <CardFGC key={idx} />
+                    return <CardFGC key={idx} data={data} />
                 })
             }
 
             {
                 bus.map((data, idx) => {
-                    return <CardBUS key={idx} />
+                    return <CardBUS key={idx} data={data} />
                 })
             }
 
             {
                 metro.map((data, idx) => {
-                    return <CardMET key={idx} />
+                    return <CardMET key={idx} data={date} />
                 })
             }
         </ScrollView>
