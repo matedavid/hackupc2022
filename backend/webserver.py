@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask, request 
 from flask_cors import CORS
 
@@ -173,7 +174,7 @@ def add_bus_entry():
   user = data["user"]
   line_name = data["lineName"]
   stop_name = data["stopName"]
-  time = None if data["time"] == None else validate_time(data["time"])
+  time = None if data["time"] is None else validate_time(data["time"])
 
   # TODO: Any check before inserting?
   # - Check user exists?
@@ -238,7 +239,6 @@ def overview(user_session):
 
   for fgc_res in fgc_results:
     times = get_times(fgc_res[0], fgc_res[1], fgc_res[2])
-    print(times)
     overview["FGC"].append({"origin": fgc_res[0], "destination": fgc_res[1], "times": times})
 
   # BUS

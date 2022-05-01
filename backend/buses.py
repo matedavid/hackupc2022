@@ -77,9 +77,8 @@ def get_horas_proximas(codigo_linea: int, codigo_parada: int, tiempo: str) -> Li
     if tiempo is not None:
         hora_date = datetime.strptime(tiempo,"%H:%M")
     else:
-        hora_date = datetime.today()
-
-    print(hora_date)
+        ttt = datetime.today()
+        hora_date = datetime(1900, 1, 1, ttt.hour, ttt.minute, ttt.second)
 
     for time in horas:
         if hora_date < time:    
@@ -107,7 +106,8 @@ def get_codigo_parada(codigo_linea: int, parada: str) -> int:
 
     if codigo_parada == 0:
         print("No existe la parada")
-        exit()
+        return 0
+
     return codigo_parada
 
 def get_codigo_linea(linea: str) -> int:
@@ -128,7 +128,7 @@ def get_codigo_linea(linea: str) -> int:
 
     if codigo_linea == 0:
         print("No existe la linea ")
-        exit()
+        return 0
 
     return codigo_linea
 

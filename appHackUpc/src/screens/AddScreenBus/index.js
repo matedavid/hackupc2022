@@ -22,7 +22,7 @@ const AddScreenBus = (props) => {
             'user': 1,
             "lineName": busLineText,
             "stopName": stopText,
-            "time": departureTime
+            "time": departureTime.length == 0 ? null : departureTime
         })
             .then((res) => {
                 if (res.data.status) {

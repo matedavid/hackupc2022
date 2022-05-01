@@ -14,8 +14,7 @@ const CardFGC = (props) => {
       </View>
 
       <View style={{ marginLeft: 10, flexDirection: 'row' }}>
-        <Text style={{ fontWeight: 'bold', fontSize: 20, marginTop: 5 }}>25</Text>
-        <Text style={{ fontWeight: 'bold', fontSize: 20, marginTop: 5 }}>min</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 20, marginTop: 5 }}>{ props.data.times[0].arrival }</Text>
       </View>
 
       <Icon name={"info"} size={25} color={'white'} style={{ marginLeft:15, marginTop: 8 }}/>

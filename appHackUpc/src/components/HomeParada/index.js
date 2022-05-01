@@ -61,7 +61,6 @@ const HomeParada = (props) => {
     }
 
     useEffect(() => {
-        setDataLoaded(false);
         if (isFocused) {
             getData();
         }
