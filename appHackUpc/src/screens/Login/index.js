@@ -53,7 +53,7 @@ const Login = (props) => {
                 <TextInput value={email} onChangeText={setEmail}
                     style={styles.textInput} placeholder="Introduce email" />
 
-                <TextInput value={password} onChangeText={setPassword}
+                <TextInput secureTextEntry={true} value={password} onChangeText={setPassword}
                     style={styles.textInput} placeholder="Introduce password" />
             </View>
 

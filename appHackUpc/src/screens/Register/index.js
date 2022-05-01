@@ -58,10 +58,10 @@ const Register = (props) => {
                 <TextInput value={email} onChangeText={setEmail}
                     style={styles.textInput} placeholder="Introduce email" />
 
-                <TextInput value={password} onChangeText={setPassword}
+                <TextInput secureTextEntry={true} value={password} onChangeText={setPassword}
                     style={styles.textInput} placeholder="Introduce password" />
 
-                <TextInput value={passwordConfirmation} onChangeText={setPasswordConfirmation}
+                <TextInput secureTextEntry={true} value={passwordConfirmation} onChangeText={setPasswordConfirmation}
                     style={styles.textInput} placeholder="Confirm your password" />
             </View>
 
