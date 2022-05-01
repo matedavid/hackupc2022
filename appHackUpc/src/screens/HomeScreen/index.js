@@ -8,6 +8,7 @@ import HomeParada from '../../components/HomeParada';
 const HomeScreen = (props) => {
     return (
         <View style={{ height: '100%' }}>
+            <HomeParada />
             <HomeAdd />
         </View>
     );
