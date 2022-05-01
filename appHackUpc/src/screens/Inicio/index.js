@@ -43,6 +43,7 @@ const Inicio = (props) => {
             <ImageBackground style={styles.image} source={require('../../assets/metro.png')} />
 
             <View style={styles.container}>
+                <Text style={{ fontSize: 40, position: 'relative', bottom: 100,fontWeight: 'bold',color: 'black'}}>Moveefy</Text>
                 <Pressable onPress={goToLogin} style={styles.button1}>
                     <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'white' }}>LOGIN</Text>
                     <Icon name={"right"} size={25} color={"white"} />
