@@ -20,6 +20,15 @@ secret_key = "secret"
 def json_response(status: bool, data: str = "") -> str:
   return json.dumps({ "status": status, "data": data })
 
+def validate_time(time: str) -> str:
+  h, m = time.split(":")
+  if len(h) != 2:
+    h = f"0{h}"
+  if len(m) != 2:
+    m = f"0{m}"
+
+  return f"{h}:{m}"
+
 def create_user_token(user: Tuple[int, str], creation_time: float, expiration_time: float) -> str:
   payload = {
     "id": user[0],
@@ -110,13 +119,18 @@ def login_user():
 
   return json_response(True, data=user_token)
 
+@app.route("/api/user/validateToken/<token>", methods=["GET"])
+def validate_token(token):
+  is_token_valid = validate_user_token(token)
+  return json_response(is_token_valid)
+
 @app.route("/api/fgc/add", methods=["POST"])
 def add_fgc_entry():
   data = json.loads(request.data)
 
   origin = data["origin"]
   destination = data["destination"]
-  time = data["time"]
+  time = validate_time(data["time"])
   user = data["user"]
 
   origin_code = get_station_code(origin)
@@ -149,7 +163,7 @@ def add_bus_entry():
   user = data["user"]
   line_name = data["lineName"]
   stop_name = data["stopName"]
-  time = data["time"]
+  time = validate_time(data["time"])
 
   # TODO: Any check before inserting?
   # - Check user exists?
@@ -189,19 +203,6 @@ def add_metro_entry():
 
   return json_response(True)
 
-"""
-@app.route("/api/fgc/", methods=["GET"])
-def get_fgc():
-  data = json.loads(request.data)
-
-  origin = data["origin"]
-  destination = data["destination"]
-  time = data["time"]
-
-  times = get_times(origin, destination, time)
-  return json_response(True, times)
-"""
-
 @app.route("/api/overview/<user_session>", methods=["GET"])
 def overview(user_session):
   is_token_valid = validate_user_token(user_session)
@@ -227,7 +228,8 @@ def overview(user_session):
 
   for fgc_res in fgc_results:
     times = get_times(fgc_res[0], fgc_res[1], fgc_res[2])
-    overview["FGC"].append(times)
+    print(times)
+    overview["FGC"].append({"origin": fgc_res[0], "destination": fgc_res[1], "times": times})
 
   # BUS
   cur.execute("""SELECT lineName, stopName, time FROM BUSTransport where user = ?;""", (user_id,))
@@ -235,7 +237,8 @@ def overview(user_session):
 
   for bus_res in bus_results:
     times = bus_horarios(bus_res[0], bus_res[1], bus_res[2])
-    overview["BUS"].append(times)
+    print(times)
+    overview["BUS"].append({"lineName": bus_res[0], "stopName": bus_res[1], "times": times})
 
   # MET
   cur.execute("""SELECT lineName from METROTransport where user = ?;""", (user_id,))
@@ -243,7 +246,8 @@ def overview(user_session):
 
   for met_res in met_results:
     times = metro_horarios(met_res[0])
-    overview["MET"].append(times)
+    print(times)
+    overview["MET"].append({"lineName": met_res[0], "times": times})  
 
   return json_response(True, overview)
 

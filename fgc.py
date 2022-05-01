@@ -40,7 +40,7 @@ def get_url(origin_address: str, destination_address: str, timemode: TimeMode, t
   destination_code = get_station_code(destination_address)
 
   today = datetime.today()
-  today = today.isoformat()
+  today = today.isoformat()[:10]
 
   url = f"https://www.fgc.cat/es/buscador/?from_address={origin_address}&from_code={origin_code}&to_address={destination_address}&to_code={destination_code}&datetime_option={timemode.value}&date={today}"
   if timemode != TimeMode.NOW:
@@ -53,7 +53,7 @@ def get_trips(url: str) -> List[Dict[str, str]]:
   res = req.get(url)
   if res.status_code != 200:
     print("Status code:", res.status_code)
-    exit(1)
+    return []
 
   soup = BeautifulSoup(res.text, 'html.parser')
   trips_js = soup.find(id="form_cercador_JS-js-after")
@@ -82,7 +82,7 @@ def get_trips(url: str) -> List[Dict[str, str]]:
   return return_trips
 
 def get_times(origin: str, destination: str, time: str | None) -> List[Dict[str, str]]:
-  if time == None:
+  if time is None:
     timemode = TimeMode.NOW
   else:
     timemode = TimeMode.DEPARTURE
