@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 const CardBUS = (props) => {
   return (
-    <View style={{ alignItems: 'center', margin: 10, padding: 5, height: 50, borderRadius: 15, flexDirection: 'row', backgroundColor: 'grey', borderRadius: 5 }}>
+    <View style={{ alignItems: 'center', margin: 10, padding: 5, height: 50, borderRadius: 15, flexDirection: 'row', backgroundColor: '#c4c4c4', borderRadius: 5 }}>
       <Text style={{ fontSize: 30, marginLeft: 10, marginRight: 10, paddingRight: 5, paddingLeft: 5, fontWeight: 'bold', backgroundColor: 'blue', borderRadius: 5 }}>{props.data.lineName}</Text>
 
       <Text style={{ fontSize: 15, fontWeight: 'bold', borderRadius: 5 }}>{props.data.stopName}</Text>

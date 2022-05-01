@@ -36,7 +36,7 @@ const Register = (props) => {
             return 
         }
 
-        axios.post("http://10.0.2.2:5000/api/user/create", {
+        axios.post("http://192.168.43.59:5000/api/user/create", {
             "email": email,
             "password": password
         }).then((res) => {

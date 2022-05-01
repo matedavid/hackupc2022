@@ -24,7 +24,7 @@ const Inicio = (props) => {
 
     const checkToken = async () => {
         const sessionToken = await AsyncStorage.getItem('sessionToken');
-        axios.get(`http://10.0.2.2:5000/api/user/validateToken/${sessionToken}`)
+        axios.get(`http://192.168.43.59:5000/api/user/validateToken/${sessionToken}`)
             .then((res) => {
                 if (res.data.status) {
                     goToHome();

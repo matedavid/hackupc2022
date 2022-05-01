@@ -16,7 +16,7 @@ const AddScreenMetro = (props) => {
     }
 
     const submit = () => {
-        axios.post("http://10.0.2.2:5000/api/metro/add", {
+        axios.post("http://192.168.43.59:5000/api/metro/add", {
             'user': 1,
             "lineName": metroLineText
         }).then((res) => {

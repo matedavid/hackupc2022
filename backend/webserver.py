@@ -247,7 +247,6 @@ def overview(user_session):
 
   for bus_res in bus_results:
     times = bus_horarios(bus_res[0], bus_res[1], bus_res[2])
-    print(times)
     overview["BUS"].append({"lineName": bus_res[0], "stopName": bus_res[1], "times": times})
 
   # MET
@@ -256,10 +255,9 @@ def overview(user_session):
 
   for met_res in met_results:
     times = metro_horarios(met_res[0])
-    print(times)
-    overview["MET"].append({"lineName": met_res[0], "times": times})  
+    overview["MET"].append({"lineName": met_res[0], "times": times})
 
   return json_response(True, overview)
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  app.run(debug=True, host="192.168.43.59")

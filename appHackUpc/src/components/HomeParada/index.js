@@ -27,7 +27,7 @@ const HomeParada = (props) => {
     const getData = async () => {
         setDataLoaded(false);
         const sessionToken = await AsyncStorage.getItem('sessionToken');
-        axios.get(`http://10.0.2.2:5000/api/overview/${sessionToken}`)
+        axios.get(`http://192.168.43.59:5000/api/overview/${sessionToken}`)
             .then((res) => {
                 if (res.data.status == false) {
                     console.log(res.data.data)
@@ -68,7 +68,7 @@ const HomeParada = (props) => {
 
     return (
         <ScrollView>
-            <Text style={{ fontSize: 40, fontWeight: 'bold', color: 'black', marginBottom: 20 }}>Welcome back!</Text>
+            <Text style={{ fontSize: 40, paddingLeft: 10, paddingTop: 15, fontWeight: 'bold', color: 'black', marginBottom: 20 }}>Welcome back!</Text>
             {
                 !dataLoaded ?
                     <Text style={{ fontSize: 20 }}>Loading...</Text>
@@ -88,7 +88,7 @@ const HomeParada = (props) => {
 
             {
                 metro.map((data, idx) => {
-                    return <CardMET key={idx} data={date} />
+                    return <CardMET key={idx} data={data} />
                 })
             }
         </ScrollView>

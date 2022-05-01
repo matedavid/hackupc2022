@@ -18,7 +18,7 @@ const AddScreenFGC = (props) => {
     }
 
     const submit = () => {
-        axios.post("http://10.0.2.2:5000/api/fgc/add", {
+        axios.post("http://192.168.43.59:5000/api/fgc/add", {
             'user': 1,
             "origin": fromText,
             "destination": destinationText,
