@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import { View } from 'react-native';
 import HomeMap from '../../components/HomeParada';
 import HomeAdd from '../../components/HomeAdd';
 import AddScreen from '../AddScreenFGC';
