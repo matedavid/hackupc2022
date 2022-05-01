@@ -1,7 +1,7 @@
 import requests
 import json
 from datetime import datetime, date
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Set
 
 
 def get_routes_data(file:str) -> Dict[str,str]:
@@ -66,7 +66,8 @@ def get_trips_data(file:str) -> Dict[str,str]:
         line = x.split(",")
         trips_data.append({
             "route_id":line[0].strip(),
-            "trip_id":line[2].strip()
+            "trip_id":line[2].strip(),
+            "service_id":line[1].strip()
         })
     trips.close()
     return trips_data
@@ -123,13 +124,14 @@ def get_trips(route_id:str,trips_data:Dict[str,str])->List[str]:
             trips.append(x["trip_id"])
     return trips
 
-def get_times_route(trips: List[str], times_data:Dict[str,str],time:str) -> List[str]:
-    trip_times =[]
-
+def get_times_route(trips: List[str], times_data:Dict[str,str],time:str) -> Set[str]:
+    trip_times = set()
     for x in times_data:
-        for i in trips:
-            if x["trip_id"] == i: #and datetime.strptime(time,"%H:%M:%S") < datetime.strptime(x["arrival_time"],"%H:%M:%S"):
-                trip_times.append(x["arrival_time"])
+        for y in trips:
+            print(x["arrival_time"])
+            if x["trip_id"] == y and datetime.strptime(x["arrival_time"],"%H:%M:%S") > datetime.strptime(time,"%H:%M:%S"):
+                trip_times.add(x["arrival_time"])
+
     return trip_times
 
 
