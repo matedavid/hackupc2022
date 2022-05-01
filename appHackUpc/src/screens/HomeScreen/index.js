@@ -8,9 +8,6 @@ import HomeParada from '../../components/HomeParada';
 const HomeScreen = (props) => {
     return (
         <View style={{ height: '100%' }}>
-            {/*Paradas*/}
-            <HomeParada />
-            {/*Where button*/}
             <HomeAdd />
         </View>
     );

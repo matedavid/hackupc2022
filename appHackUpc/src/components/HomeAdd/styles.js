@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 565,
+        top: 617,
     },
     bot1: {
         borderRadius: 25,

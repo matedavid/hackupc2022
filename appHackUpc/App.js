@@ -14,6 +14,8 @@ import {StatusBar} from 'react-native';
 
 import Router from './src/Navigation/Root';
 
+global.submited = false;
+
 const App: () => ReactNode = () => {
   return (
     <>
