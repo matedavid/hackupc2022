@@ -3,7 +3,7 @@ Moveefy
 
 A better way to organize your trips with public transport
 
-*Contributors:*
+**Contributors:**
 * https://github.com/ADVAGA1
 * https://github.com/jjoanr
 * https://github.com/delguis14
