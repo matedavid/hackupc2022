@@ -27,7 +27,7 @@ const HomeParada = (props) => {
     const getData = async () => {
         setDataLoaded(false);
         const sessionToken = await AsyncStorage.getItem('sessionToken');
-        axios.get(`http://192.168.43.59:5000/api/overview/${sessionToken}`)
+        axios.get(`http://10.0.2.2:5000/api/overview/${sessionToken}`)
             .then((res) => {
                 if (res.data.status == false) {
                     console.log(res.data.data)
